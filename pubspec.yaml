@@ -2,7 +2,7 @@ name: otel_shared_preferences
 description: OpenTelemetry instrumentation for `package:shared_preferences`.
   Extension methods on SharedPreferences that wrap write/remove/clear calls
   with key-value-store spans.
-version: 0.1.0
+version: 0.2.0-wip
 repository: https://github.com/dartastic/otel_shared_preferences
 homepage: https://dartastic.io
 
