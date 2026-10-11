@@ -1,7 +1,7 @@
 // Licensed under the Apache License, Version 2.0
 // Copyright 2025, Mindful Software LLC, All rights reserved.
 
-import 'package:dartastic_opentelemetry/dartastic_opentelemetry.dart';
+import 'package:dartastic_opentelemetry_api/dartastic_opentelemetry_api.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'shared_preferences_semantics.dart';
@@ -10,10 +10,10 @@ import 'shared_preferences_suppression.dart';
 const _tracerName = 'otel_shared_preferences';
 const _storageSystem = 'shared_preferences';
 
-Tracer _tracer() => OTel.tracerProvider().getTracer(_tracerName);
+APITracer _tracer() => OTelAPI.tracerProvider().getTracer(_tracerName);
 
 Attributes _attrs(String operation, [String? key]) =>
-    OTel.attributesFromMap(<String, Object>{
+    OTelAPI.attributesFromMap(<String, Object>{
       SharedPreferencesSemantics.system.key: _storageSystem,
       SharedPreferencesSemantics.operation.key: operation,
       if (key != null) SharedPreferencesSemantics.storageKey.key: key,
@@ -33,8 +33,8 @@ Future<R> _traced<R>({
   try {
     return await invoke();
   } catch (e, st) {
-    span.addAttributes(OTel.attributes([
-      OTel.attributeString(
+    span.addAttributes(OTelAPI.attributes([
+      OTelAPI.attributeString(
         ErrorAttributes.errorType.key,
         e.runtimeType.toString(),
       ),
