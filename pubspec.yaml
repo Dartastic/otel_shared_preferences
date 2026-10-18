@@ -3,7 +3,7 @@ description: >-
   OpenTelemetry instrumentation for shared_preferences by Dartastic.io. Adds
   standard OpenTelemetry observability to applications that use
   shared_preferences.
-version: 0.2.1
+version: 0.2.2-wip
 repository: https://github.com/dartastic/otel_shared_preferences
 homepage: https://dartastic.io
 
